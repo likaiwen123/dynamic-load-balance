@@ -77,5 +77,9 @@ Proc: 9, number: 121521339
 Estimated value of pi: 3.14157
 ```
 
+## How to Integrate in Your Project
+
+In fact, the `main.cpp` file is a demonstration of how to use the `DynamicLoadBalance` class for calculating PI with Monte Carlo method. You may substitute the `calc_pi_lb_calc` function with your own task function, and the `DynamicLoadBalance` class will handle the load balancing for you. Additionally, a result collection function like `collect_result` of class `CalcPi` is required to gather the results from all processes.
+
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
