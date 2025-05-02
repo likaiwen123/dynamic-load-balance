@@ -31,10 +31,17 @@ int main(int argc, char **argv) {
   // Example usage of LoadBalance
   LoadBalance lb(number_of_samples, time_interval);
   CalcPi calc_pi;
+  // Dynamic load balance and calculation of pi
   lb.Run(calc_pi_lb_calc, &calc_pi);
+  // Collect results from all processes
+  calc_pi.collect_result();
+  // Get the estimated value of pi
   double pi = calc_pi.get_pi();
   if (OParallel.is_master) {
-      std::cout << "Estimated value of pi: " << pi << std::endl;
+    std::cout << "Estimated value of pi: " << pi << std::endl;
+#ifndef NDEBUG
+    std::cout << "Details: " << calc_pi.details() << std::endl;
+#endif
   }
 
   MPI_Finalize();

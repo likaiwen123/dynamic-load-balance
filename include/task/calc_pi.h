@@ -6,6 +6,7 @@
 
 #include <random>
 #include <utility>
+#include <vector>
 
 #include "parallel.h"
 
@@ -26,6 +27,11 @@ public:
   // - This is necessary to get the final count of points inside the circle and the total number of points generated
   // across all processes
   void collect_result();
+
+  // This function is used to provide the details of the calculation
+  std::string details() {
+    return "Count: " + std::to_string(count) + ", Total Points: " + std::to_string(n);
+  }
 };
 
 // Calculate pi using the Monte Carlo method, serial version
