@@ -17,13 +17,13 @@ bool LoadBalance::IsDone(long long target_number, long long cur_number, time_t *
 #ifndef NDEBUG
       std::cout << "Proc: " << OParallel.rank << ", number: " << snapshot_ << std::endl;
       if (OParallel.is_master) {
-        std::cout << "Total: " << reduce_result_ << ", time: " << time(nullptr) << std::endl;
+        std::cout << "Total: " << reduce_result_ << ", elapsed: " << time(nullptr) - start_time_ << "s" << std::endl;
       }
 #endif
 
       if (reduce_result_ >= target_number) {
         if (OParallel.is_master) {
-          std::cout << "Total: " << reduce_result_ << ", target: " << target_number << ", time: " << time(nullptr) << std::endl;
+          std::cout << "Total: " << reduce_result_ << ", target: " << target_number << ", elapsed: " << time(nullptr) - start_time_ << "s" << std::endl;
         }
         return true;
       }
@@ -48,6 +48,7 @@ bool LoadBalance::IsDone(long long target_number, long long cur_number, time_t *
 
 void LoadBalance::Run(void (*func)(void *), void *arg) {
   time_t last_t = time(nullptr);
+  start_time_ = last_t;
   long long cur_number = 0;
 
   while (!IsDone(target_number, cur_number, &last_t)) {

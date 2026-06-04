@@ -16,6 +16,7 @@ protected:
   long long reduce_result_ = 0; // Result buffer for non-blocking reduce
   long long snapshot_ = 0; // Local count snapshot when reduce was posted
   bool reduce_pending_ = false; // Whether a non-blocking reduce is in flight
+  time_t start_time_ = 0; // Wall-clock time when Run() started
   // Function to check if the target number of samples has been reached
   bool IsDone(long long target_number, long long cur_number, time_t *last_t);
 public:
