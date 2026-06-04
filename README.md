@@ -40,42 +40,42 @@ This command will run the program with 10 worker processes, distributing 1 billi
 
 When using `-DCMAKE_BUILD_TYPE=Debug`, the program will run in debug mode, and the expected output will be like:
 ```
-Proc: 0, number: 35026905
-Total: 419409272, elapsed: 1s
-Proc: 1, number: 38749643
-Proc: 2, number: 43660371
-Proc: 3, number: 39140101
-Proc: 4, number: 41997399
-Proc: 5, number: 44250291
-Proc: 6, number: 43877483
-Proc: 7, number: 44100546
-Proc: 8, number: 44288064
-Proc: 9, number: 44318469
-Proc: 0, number: 82126249
-Total: 870758880, elapsed: 2s
-Proc: 1, number: 79111949
-Proc: 2, number: 90689803
-Proc: 3, number: 76541942
-Proc: 4, number: 87432813
-Proc: 5, number: 89978695
-Proc: 6, number: 90316295
-Proc: 7, number: 91523556
-Proc: 8, number: 91289089
-Proc: 9, number: 91748489
-Proc: 0, number: 129537082
-Total: 1320519364, elapsed: 3s
-Total: 1320519364, target: 1000000000, elapsed: 3s
-Proc: 1, number: 126446268
-Proc: 2, number: 137713734
-Proc: 3, number: 115836723
-Proc: 4, number: 130863300
-Proc: 5, number: 128953338
-Proc: 6, number: 134396594
-Proc: 7, number: 138935416
-Proc: 8, number: 138718327
-Proc: 9, number: 139118582
-Estimated value of pi: 3.14165
-Total samples: 1000000000, elapsed: 3s
+Proc: 0, number: 23193088
+Total: 239474009, elapsed: 1s
+Proc: 1, number: 20442726
+Proc: 2, number: 23563259
+Proc: 3, number: 22097033
+Proc: 4, number: 25706527
+Proc: 5, number: 22532128
+Proc: 6, number: 24855907
+Proc: 7, number: 25695998
+Proc: 8, number: 25669170
+Proc: 9, number: 25718173
+Proc: 0, number: 69387874
+Total: 689176430, elapsed: 2s
+Proc: 1, number: 57907271
+Proc: 2, number: 70958621
+Proc: 3, number: 68017159
+Proc: 4, number: 72540199
+Proc: 5, number: 61355300
+Proc: 6, number: 70934737
+Proc: 7, number: 72708593
+Proc: 8, number: 72657049
+Proc: 9, number: 72709627
+Proc: 0, number: 115533704
+Total: 1136295360, elapsed: 3s
+Total: 1136295360, target: 1000000000, elapsed: 3s
+Proc: 1, number: 96565845
+Proc: 2, number: 117715846
+Proc: 3, number: 111369477
+Proc: 4, number: 113676086
+Proc: 5, number: 105893316
+Proc: 6, number: 116518755
+Proc: 7, number: 119708524
+Proc: 8, number: 119667787
+Proc: 9, number: 119646020
+Estimated value of pi: 3.14154
+Total samples: 1136295360 / target: 1000000000, elapsed: 3s
 ```
 
 ## How to Integrate in Your Project
