@@ -20,7 +20,6 @@ protected:
   bool IsDone(long long target_number, long long cur_number, time_t *last_t);
 public:
   LoadBalance(long long target_number, double interval = 1.0) : target_number(target_number), time_interval(interval) {}
-  ~LoadBalance();
 
   void SetTimeInterval(int interval) {
     time_interval = interval;

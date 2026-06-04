@@ -6,12 +6,6 @@
 #include "lb.h"
 
 
-LoadBalance::~LoadBalance() {
-  if (reduce_pending_) {
-    MPI_Wait(&reduce_request_, MPI_STATUS_IGNORE);
-  }
-}
-
 bool LoadBalance::IsDone(long long target_number, long long cur_number, time_t *last_t) {
   // Check for completed non-blocking reduce
   if (reduce_pending_) {
@@ -59,5 +53,11 @@ void LoadBalance::Run(void (*func)(void *), void *arg) {
   while (!IsDone(target_number, cur_number, &last_t)) {
     func(arg);
     cur_number++;
+  }
+
+  // Explicitly ensure any in-flight reduce is complete
+  if (reduce_pending_) {
+    MPI_Wait(&reduce_request_, MPI_STATUS_IGNORE);
+    reduce_pending_ = false;
   }
 }
