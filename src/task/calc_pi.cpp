@@ -20,8 +20,10 @@ double CalcPi::get_pi() {
 void CalcPi::collect_result() {
   int total_count = 0;
   int total_n = 0;
-  MPI_Allreduce(&count, &total_count, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
-  MPI_Allreduce(&n, &total_n, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
+  MPI_Request reqs[2];
+  MPI_Iallreduce(&count, &total_count, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD, &reqs[0]);
+  MPI_Iallreduce(&n, &total_n, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD, &reqs[1]);
+  MPI_Waitall(2, reqs, MPI_STATUSES_IGNORE);
   count = total_count;
   n = total_n;
 }

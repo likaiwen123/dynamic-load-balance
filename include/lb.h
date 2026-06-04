@@ -12,10 +12,15 @@ class LoadBalance {
 protected:
   double time_interval; // Time interval for load balancing, seconds
   long long target_number; // Target number of simulated samples
-    // Function to check if the target number of samples has been reached
+  MPI_Request reduce_request_ = MPI_REQUEST_NULL; // Non-blocking reduce request
+  long long reduce_result_ = 0; // Result buffer for non-blocking reduce
+  long long snapshot_ = 0; // Local count snapshot when reduce was posted
+  bool reduce_pending_ = false; // Whether a non-blocking reduce is in flight
+  // Function to check if the target number of samples has been reached
   bool IsDone(long long target_number, long long cur_number, time_t *last_t);
 public:
   LoadBalance(long long target_number, double interval = 1.0) : target_number(target_number), time_interval(interval) {}
+  ~LoadBalance();
 
   void SetTimeInterval(int interval) {
     time_interval = interval;
