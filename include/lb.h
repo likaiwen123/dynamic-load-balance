@@ -31,6 +31,7 @@ public:
   }
 
   void Run(void (*func)(void *), void *arg);
+  time_t GetElapsedTime() const { return time(nullptr) - start_time_; }
 };
 
 #endif // LB_H
