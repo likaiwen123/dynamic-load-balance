@@ -32,6 +32,7 @@ public:
 
   void Run(void (*func)(void *), void *arg);
   time_t GetElapsedTime() const { return time(nullptr) - start_time_; }
+  long long GetTotalSamples() const { return reduce_result_; }
 };
 
 #endif // LB_H

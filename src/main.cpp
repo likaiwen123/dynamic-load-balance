@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
   double pi = calc_pi.get_pi();
   if (OParallel.is_master) {
     std::cout << "Estimated value of pi: " << pi << std::endl;
-    std::cout << "Total samples: " << number_of_samples << ", elapsed: " << lb.GetElapsedTime() << "s" << std::endl;
+    std::cout << "Total samples: " << lb.GetTotalSamples() << " / target: " << number_of_samples << ", elapsed: " << lb.GetElapsedTime() << "s" << std::endl;
 #ifndef NDEBUG
     std::cout << "Details: " << calc_pi.details() << std::endl;
 #endif
